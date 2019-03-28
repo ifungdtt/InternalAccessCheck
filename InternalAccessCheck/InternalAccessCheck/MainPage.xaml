@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="InternalAccessCheck.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:InternalAccessCheck">
+
+    <StackLayout VerticalOptions="Center">
+        <!--  Place new controls here  -->
+        <Entry
+            x:Name="Entry"
+            Keyboard="Url"
+            Placeholder="Input URL here" />
+        <Label x:Name="Label" Text="Input URL to start check" />
+        <Button Clicked="Button_Clicked" Text="Check" />
+    </StackLayout>
+
+</ContentPage>
