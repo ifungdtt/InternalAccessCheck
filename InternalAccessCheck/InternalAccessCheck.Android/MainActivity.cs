@@ -6,6 +6,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Com.Airwatch.Sdk;
+using System.Threading.Tasks;
 
 namespace InternalAccessCheck.Droid
 {
@@ -20,6 +22,12 @@ namespace InternalAccessCheck.Droid
             base.OnCreate(savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
+        }
+        protected override void OnResume()
+        {
+            Task.Run(() => {
+                SDKManager.Init(this);
+            });
         }
     }
 }

@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using AirWatchSDK;
 
 using Foundation;
+using ObjCRuntime;
 using UIKit;
 
 namespace InternalAccessCheck.iOS
@@ -24,8 +27,32 @@ namespace InternalAccessCheck.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
+            if (Runtime.Arch == Arch.SIMULATOR)
+            {
+                Debug.WriteLine("Running in Simulator, skipping initialization of the AirWatch SDK!");
+            }
+            else
+            {
+                Debug.WriteLine("Running on Device, beginning initialization of the AirWatch SDK.");
 
+                // Configure the Controller by:
+                var sdkController = AWController.ClientInstance();
+                // 1) defining the callback scheme so the app can get called back,
+                sdkController.CallbackScheme = "mysampleapp"; // defined in Info.plist
+                                                              // 2) set the delegate to know when the initialization has been completed.
+                sdkController.Delegate = AirWatchSDKManager.Instance;
+                return true;
+            }
             return base.FinishedLaunching(app, options);
+        }
+
+        public override bool HandleOpenURL(UIApplication application, NSUrl url)
+        {
+            return AWController.ClientInstance().HandleOpenURL(url, "");
+        }
+        public override void OnActivated(UIApplication application)
+        {
+            AWController.ClientInstance().Start();
         }
     }
 }
