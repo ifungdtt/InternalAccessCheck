@@ -38,10 +38,9 @@ namespace InternalAccessCheck.iOS
                 // Configure the Controller by:
                 var sdkController = AWController.ClientInstance();
                 // 1) defining the callback scheme so the app can get called back,
-                sdkController.CallbackScheme = "mysampleapp"; // defined in Info.plist
-                                                              // 2) set the delegate to know when the initialization has been completed.
+                sdkController.CallbackScheme = "com.deloitte.cn.ESSDev.url"; // defined in Info.plist
+                // 2) set the delegate to know when the initialization has been completed.
                 sdkController.Delegate = AirWatchSDKManager.Instance;
-                return true;
             }
             return base.FinishedLaunching(app, options);
         }

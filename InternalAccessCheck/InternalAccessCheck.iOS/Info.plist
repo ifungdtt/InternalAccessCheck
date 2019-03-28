@@ -27,12 +27,27 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.deloitte.cn.ESSDev</string>
 	<key>CFBundleVersion</key>
-	<string>1.0</string>
+	<string>4</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>CFBundleName</key>
 	<string>InternalAccessCheck</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0.3</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.deloitte.cn.ESSDev.url</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>essdev</string>
+			</array>
+			<key>CFBundleTypeRole</key>
+			<string>None</string>
+		</dict>
+	</array>
 </dict>
 </plist>
